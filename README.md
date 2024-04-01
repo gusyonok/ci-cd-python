@@ -130,6 +130,7 @@ Example response:
 #### DELETE `/api/products/{product_id}`
 Deletes a single product by ID.
 
+
 Example response:
 ```json
 {
