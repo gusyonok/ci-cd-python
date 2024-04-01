@@ -24,12 +24,7 @@ class Products(Resource):
         parser = reqparse.RequestParser()
         parser.add_argument("name", type=str, required=True)
         parser.add_argument("price", type=float, required=True)
-        args = parser.parse_args()
-
-        data = {
-            "name": args["name"],
-            "price": args["price"]
-        }
+        args = parser.parse_args
         product = create_product(**data)
 
         return {"message": "Product added successfully.", "productId": product.id}, 201
@@ -48,16 +43,13 @@ class Product(Resource):
         if not product:
             return {"error": "Product not found."}, 404
 
-        parser = reqparse.RequestParser()
-        parser.add_argument("name", type=str)
-        parser.add_argument("price", type=float)
-        args = parser.parse_args()
+       
         data = {
             "product_id": product_id
         }
         if args["name"]:
             data["name"] = args["name"]
-        if args["price"]:
+        If args["price"]:
             data["price"] = args["price"]
         update_product(**data)
         return {"message": "Product updated successfully."}, 200
